@@ -41,7 +41,7 @@ int main() {
             int ct = 0;
             for(auto i : hash_table)
             {
-                cout <<"        " i.first <<  "     ";
+                cout <<"       " i.first <<  "     ";
                 for (auto j : i.second)
                     cout << j;
                 cout << endl;
@@ -53,21 +53,69 @@ int main() {
         else if (in == 2)
         {
             string key;
-            cout << "Which key would you like to find: ";
+            cout << "       Which key would you like to find: ";
             cin >> key;
             auto it = hash_table.find(key);
             if (it != hash_table.end())
-                cout << key << ""
+            {
+                cout <<"       " it.first <<  "     ";
+                for (auto j : it.second)
+                    cout << j;
+                cout << endl;
+            }
+            else
+                cout <<"        " << key << " was not found" << endl;
         }
         else if (in == 3)
         {
+            string code;
+            cout << "       What code would you like to add: ";
+            cin >> code;
+            list<char> t;
+            int index = gen_hash_index(code);
+            for (auto i : code)
+            {
+                t.push_back(i);
+            }
+            hash_table[index] = t;
 
         }
         else if (in == 4)
         {
-
+            string key;
+            cout << "       Which key would you like to delete: ";
+            cin >> key;
+            auto it = hash_table.find(key);
+            if (it != hash_table.end())
+            {
+                hash_table.erase(key);
+                cout << endl;
+            }
+            else
+                cout <<"        " << key << " was not found" << endl;
         }
-        cout << endl;
+        else if (in == 5)
+        {
+            string key;
+            cout << "       Which key would you like to modify: ";
+            cin >> key;
+            auto it = hash_table.find(key);
+            if (it != hash_table.end())
+            {
+                string data;
+                cout << "      What would you like to put in this key: ";
+                list<char> newlist;
+                for (auto i : data)
+                {
+                    newlist.push_back(i);
+                }
+
+                hash_table[key] = data;
+            }
+            else
+                cout <<"        " << key << " was not found" << endl;
+        }
+
         in = menu();
     }
 
