@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1733286973 source:c:\users\guine\onedrive\documents\codeblocks\210-lab-37\main.cpp
+	<iostream>
+	<string>
+	<cctype>
+
