@@ -7,6 +7,7 @@
 using namespace std;
 
 int gen_hash_index(string str);
+int menu();
 
 int main() {
     ifstream inputFile("lab-37-data.txt");
@@ -31,20 +32,46 @@ int main() {
         hash_table[index] = t;
     }
 
-    int ct = 0;
+    int in = menu();
 
-    for(auto i : hash_table)
+    while(in != 6)
     {
-        cout << i.first <<  "     ";
-        for (auto j : i.second)
-            cout << j;
-        cout << endl;
-        ct++;
-        if (ct == 99)
+        if(in == 1)
         {
-            break;
+            int ct = 0;
+            for(auto i : hash_table)
+            {
+                cout <<"        " i.first <<  "     ";
+                for (auto j : i.second)
+                    cout << j;
+                cout << endl;
+                ct++;
+                if (ct == 99)
+                    break;
+            }
         }
+        else if (in == 2)
+        {
+            string key;
+            cout << "Which key would you like to find: ";
+            cin >> key;
+            auto it = hash_table.find(key);
+            if (it != hash_table.end())
+                cout << key << ""
+        }
+        else if (in == 3)
+        {
+
+        }
+        else if (in == 4)
+        {
+
+        }
+        cout << endl;
+        in = menu();
     }
+
+
 
     return 0;
 }
@@ -57,6 +84,25 @@ int gen_hash_index(string str)
         sum += (int) str[i];
     }
     return sum;
+}
+
+int menu()
+{
+    int entry;
+    cout << "Welcome!" << endl;
+    cout << "   [1] Print First 100 Entries" << endl;
+    cout << "   [2] Search for a key" << endl;
+    cout << "   [3] Add a key" << endl;
+    cout << "   [4] Remove a key" << endl;
+    cout << "   [5] Modify a key" << endl;'
+    cout << "   [6] Exit" << endl;
+
+    do{
+        cout << "Enter: ";
+        cin >> entry;
+    } while(entry < 0 || entry > 6);
+
+    return entry;
 }
 
 /*
