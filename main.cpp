@@ -6,7 +6,7 @@
 #include <list>
 using namespace std;
 
-int gen_has_index(string str);
+int gen_hash_index(string str);
 
 int main() {
     ifstream inputFile("lab-37-data.txt");
@@ -17,16 +17,34 @@ int main() {
         return 0;
     }
 
-    map<int, list<string>> hash_table;
+    map<int, list<char>> hash_table;
 
     string temp;
     while(getline(inputFile, temp))
     {
+        list<char> t;
         int index = gen_hash_index(temp);
-        t
+        for (auto i : temp)
+        {
+            t.push_back(i);
+        }
+        hash_table[index] = t;
     }
 
+    int ct = 0;
 
+    for(auto i : hash_table)
+    {
+        cout << i.first <<  "     ";
+        for (auto j : i.second)
+            cout << j;
+        cout << endl;
+        ct++;
+        if (ct == 99)
+        {
+            break;
+        }
+    }
 
     return 0;
 }
