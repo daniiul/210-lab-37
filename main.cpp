@@ -2,9 +2,11 @@
 #include <string>
 #include <cctype>
 #include <fstream>
+#include <map>
+#include <list>
 using namespace std;
 
-int sum_ascii(string str);
+int gen_has_index(string str);
 
 int main() {
     ifstream inputFile("lab-37-data.txt");
@@ -15,20 +17,21 @@ int main() {
         return 0;
     }
 
-    int total_sum = 0;
+    map<int, list<string>> hash_table;
 
     string temp;
     while(getline(inputFile, temp))
     {
-        total_sum += sum_ascii(temp);
+        int index = gen_hash_index(temp);
+        t
     }
 
-    cout << "The sum ascii value of 'the database' is: " << total_sum << endl;
+
 
     return 0;
 }
 
-int sum_ascii(string str)
+int gen_hash_index(string str)
 {
     int sum = 0;
     for (int i = 0; i < str.size(); i++)
