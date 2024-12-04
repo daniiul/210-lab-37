@@ -1,14 +1,29 @@
 #include <iostream>
 #include <string>
 #include <cctype>
+#include <fstream>
 using namespace std;
-
 
 int sum_ascii(string str);
 
 int main() {
-    int as = sum_ascii("536B9DFC93AF");
-    cout << "The ascii value of '536B9DFC93AF' is: " << as << endl;
+    ifstream inputFile("lab-37-data.txt");
+
+    if(!inputFile.is_open())
+    {
+        cout << "File failed to open!" << endl;
+        return 0;
+    }
+
+    int total_sum = 0;
+
+    string temp;
+    while(getline(inputFile, temp))
+    {
+        total_sum += sum_ascii(temp);
+    }
+
+    cout << "The sum ascii value of 'the database' is: " << total_sum << endl;
 
     return 0;
 }
