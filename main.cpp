@@ -1,3 +1,5 @@
+// COMSC-210 | 210-lab-38 | Daniil Malakhov
+// IDE used: Codeblocks
 #include <iostream>
 #include <string>
 #include <cctype>
@@ -41,7 +43,7 @@ int main() {
             int ct = 0;
             for(auto i : hash_table)
             {
-                cout <<"       " i.first <<  "     ";
+                cout << "       " << i.first <<  "     ";
                 for (auto j : i.second)
                     cout << j;
                 cout << endl;
@@ -52,14 +54,14 @@ int main() {
         }
         else if (in == 2)
         {
-            string key;
+            int key;
             cout << "       Which key would you like to find: ";
             cin >> key;
             auto it = hash_table.find(key);
             if (it != hash_table.end())
             {
-                cout <<"       " it.first <<  "     ";
-                for (auto j : it.second)
+                cout <<"       " << it->first <<  "     ";
+                for (auto j : it->second)
                     cout << j;
                 cout << endl;
             }
@@ -82,7 +84,7 @@ int main() {
         }
         else if (in == 4)
         {
-            string key;
+            int key;
             cout << "       Which key would you like to delete: ";
             cin >> key;
             auto it = hash_table.find(key);
@@ -96,7 +98,7 @@ int main() {
         }
         else if (in == 5)
         {
-            string key;
+            int key;
             cout << "       Which key would you like to modify: ";
             cin >> key;
             auto it = hash_table.find(key);
@@ -104,13 +106,14 @@ int main() {
             {
                 string data;
                 cout << "      What would you like to put in this key: ";
+                cin >> data;
                 list<char> newlist;
                 for (auto i : data)
                 {
                     newlist.push_back(i);
                 }
 
-                hash_table[key] = data;
+                hash_table[key] = newlist;
             }
             else
                 cout <<"        " << key << " was not found" << endl;
@@ -142,7 +145,7 @@ int menu()
     cout << "   [2] Search for a key" << endl;
     cout << "   [3] Add a key" << endl;
     cout << "   [4] Remove a key" << endl;
-    cout << "   [5] Modify a key" << endl;'
+    cout << "   [5] Modify a key" << endl;
     cout << "   [6] Exit" << endl;
 
     do{
